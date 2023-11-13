@@ -1,4 +1,3 @@
-require("@nomicfoundation/hardhat-toolbox");
 require('solidity-coverage');
 require('hardhat-contract-sizer');
 // require("@nomiclabs/hardhat-etherscan");

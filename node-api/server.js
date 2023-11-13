@@ -4,7 +4,7 @@ const bodyParser = require('body-parser');
 const { successResponse, errorResponse } = require('./helpers/helper');
 require('dotenv').config();
  //for testnet
-const MultiVault = require('./abi/testnet.json');
+const MultiVault = require('./abi/testnet');
 
 
 const app = express();
@@ -19,8 +19,9 @@ app.post('/MultiVoult/proposeTransaction', async (req, res) => {
   try {
       const {_privateKey, _to, _data, _value } = req.body; 
       const wallet = new ethers.Wallet(_privateKey, provider);
-
       const Contract = new ethers.Contract(MultiVault_Contract, MultiVault, wallet);
+      console.log("Contract data Data" , Contract)
+
        const value = ethers.utils.parseUnits(_value.toString(), 'ether');
 
       const gasLimit = await Contract.estimateGas.proposeTransaction(_to, _data, value);

@@ -11,11 +11,11 @@ contract MultiSigWallet {
     struct Transaction {
         address to;
         bytes data;
-        uint amount;
+        uint value;
         bool executed;
         uint numOfApprovals;
     }
-
+    //these are the events for reading the data after transctions 
     event TransactionProposed(uint indexed txId, address indexed proposer, address indexed to, uint value, bytes data);
     event TransactionApproved(address indexed approver, uint indexed txId);
     event TransactionExecuted(address indexed executor, uint indexed txId, address indexed to, uint value, bytes data);
@@ -63,17 +63,16 @@ contract MultiSigWallet {
             isAuthorizedSigner[_authorizedSigners[i]] = true;
         }
     }
-
     function proposeTransaction(
         address _to,
         bytes calldata _data,
-        uint _amount
-    ) public onlyAuthorizedSigner returns (uint txId) {
+        uint _value
+    ) public payable  returns (uint txId) {
         txId = transactions.length;
-        Transaction memory transaction = Transaction({to: _to, data: _data, amount: _amount, executed: false, numOfApprovals: 0});
+        Transaction memory transaction = Transaction({to: _to, data: _data, value: _value, executed: false, numOfApprovals: 0});
         transactions.push(transaction);
 
-        emit TransactionProposed(txId, msg.sender, _to, _amount, _data);
+        emit TransactionProposed(txId, msg.sender, _to, _value, _data);
     }
 
     function approveTransaction(uint _txId) public onlyAuthorizedSigner transactionExists(_txId) notExecuted(_txId) {
@@ -90,19 +89,20 @@ contract MultiSigWallet {
         }
     }
 
-    function executeTransaction(uint _txId) public onlyOwner transactionExists(_txId) notExecuted(_txId) {
+    function executeTransaction(uint _txId) public onlyAuthorizedSigner transactionExists(_txId) notExecuted(_txId)  returns(bool success) {
         Transaction storage txn = transactions[_txId];
         require(txn.numOfApprovals >= quorum, "Not enough approvals");
 
-        require(address(this).balance >= txn.amount, "Not enough ETH");
+        require(address(this).balance >= txn.value, "Not enough ETH");
 
         txn.executed = true;
-        (bool success, ) = payable(txn.to).call{value: txn.amount}(txn.data);
+        
+        ( success, ) = payable(txn.to).call{value: txn.value}(txn.data);
         require(success, "Transaction execution failed");
 
-        emit TransactionExecuted(msg.sender, _txId, txn.to, txn.amount, txn.data);
+        emit TransactionExecuted(msg.sender, _txId, txn.to, txn.value, txn.data);
     }
-    function revokeApproval(uint _txId) public onlyOwner transactionExists(_txId) notExecuted(_txId) {
+    function revokeApproval(uint _txId) public onlyAuthorizedSigner transactionExists(_txId) notExecuted(_txId) {
         require(approvals[_txId][msg.sender], "not yet approved");
 
         approvals[_txId][msg.sender] = false;

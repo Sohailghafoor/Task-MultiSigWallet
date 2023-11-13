@@ -8,11 +8,13 @@ const hre = require("hardhat");
 
 async function main() {
   const MultiSigWallet = await hre.ethers.getContractFactory("MultiSigWallet");
-  const mutlisigwallet = await MultiSigWallet.deploy("GENERATE ADDRESS ARRAY", 2);
+  const walletAddresses = ["0xbC5844Bc9bC4c48D84De951Ce05Ce2c7b5590171", "0x63c24f35db3f2d7D2Ecb49626d02de2bbA093780"];
 
-  await mutlisigwallet.deployed();
+  const mutlisigwallets = await MultiSigWallet.deploy(walletAddresses, 2);
 
-  console.log("MultiSigWallet deployed to:", mutlisigwallet.address);
+  await mutlisigwallets.deployed();
+
+  console.log("MultiSigWallet deployed to:", mutlisigwallets.address);
 }
 
 // We recommend this pattern to be able to use async/await everywhere

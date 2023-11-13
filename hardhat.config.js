@@ -3,12 +3,10 @@ require('solidity-coverage');
 require('hardhat-contract-sizer');
 // require("@nomiclabs/hardhat-etherscan");
 // require("@nomiclabs/hardhat-ethers");
-
-const ETHER_SCAN = "HENVKFY8XI4EEMK1I1J9AHUA7NIFSMICI6";
-const INFURA_API_KEY = "bad101aca4a44e2bbdad6ecf64d7d88f";
-const SEPOLIA_PRIVATE_KEY =
-  " ";
-  //private wallet key for the deployer
+require('dotenv').config();
+const ETHER_SCAN = process.env.ETHER_SCAN
+const INFURA_API_KEY = process.env.INFURA_API_KEY
+const SEPOLIA_PRIVATE_KEY = process.env.SEPOLIA_PRIVATE_KEY
 /**
  * @type import('hardhat/config').HardhatUserConfig
  */

@@ -18,6 +18,8 @@ for smart contract open Muli-signature-wallet folder to see the all functionalit
 # For Running API on local Open Folder Node-API
 
 ```shell
+In Node-API Folder
+run
 node server.js
 
 ```

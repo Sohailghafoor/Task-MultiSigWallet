@@ -1,0 +1,332 @@
+{
+	"info": {
+		"_postman_id": "980e7996-92c8-4f74-86c8-58dfab9e1325",
+		"name": "MultiVault",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "28174589"
+	},
+	"item": [
+		{
+			"name": "proposeTransaction",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{   \"_privateKey\": \"\",\n    \"_to\" : \"0x1fffb1246EDCE4d32A420AD531377F048bf37Ed7\",\n    \"_data\" : \"0x68656c6c6f\",\n    \"_value\" : \"0.001\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/MultiVoult/proposeTransaction",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"MultiVoult",
+						"proposeTransaction"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "approveTransaction",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"_privateKey\": \"\",\n    \"_txId\": \"0\"\n\n\n\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/MultiVoult/approveTransaction",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"MultiVoult",
+						"approveTransaction"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "revokeApproval",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"_privateKey\": \"\",\n    \"_txId\": \"1\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/MultiVoult/revokeApproval",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"MultiVoult",
+						"revokeApproval"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "approvals",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n        \"_txId\": \"19\",\n        \"_address\" : \"0xbC5844Bc9bC4c48D84De951Ce05Ce2c7b5590171\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/MultiVoult/approvals",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"MultiVoult",
+						"approvals"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "authorizedSigners",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"_index\": \"0\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/MultiVoult/authorizedSigners",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"MultiVoult",
+						"authorizedSigners"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getAuthorizedSigners",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:3000/MultiVoult/getAuthorizedSigners",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"MultiVoult",
+						"getAuthorizedSigners"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getBalance",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/MultiVoult/getBalance",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"MultiVoult",
+						"getBalance"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getTransactionCount",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/MultiVoult/getTransactionCount",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"MultiVoult",
+						"getTransactionCount"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "isAuthorizedSigner",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"_address\": \"0xbC5844Bc9bC4c48D84De951Ce05Ce2c7b5590171\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/MultiVoult/isAuthorizedSigner",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"MultiVoult",
+						"isAuthorizedSigner"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "owner",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/MultiVoult/owner",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"MultiVoult",
+						"owner"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "quorum",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/MultiVoult/quorum",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"MultiVoult",
+						"quorum"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "transactions",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"_index\": \"1\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/MultiVoult/transactions",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"MultiVoult",
+						"transactions"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

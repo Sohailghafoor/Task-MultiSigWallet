@@ -25,11 +25,18 @@ node server.js
 ```
 # Now you can Call api from postmen 
 ```shell
-I will also share the Postmen Collection for testing of these API
+I will also share the Postmen Collection for testing of these API, just download that postmen collection and import into post men and then call one by one by passing right parameter
 - proposeTransaction
 - approveTransaction  
 - revoke pending transactions 
-- executeTransaction
+- executeTransaction this function is auto call on secound approval of transction from singer 
+- approvals
 - getbalance
-- 
+- authorizedSigners
+- getAuthorizedSigners
+- getTransactionCount
+- isAuthorizedSigner
+- owner (contract owner )
+- quorum (number of approval for transaction needed)
+- transactions (transaction id details)
 ```
